@@ -3,17 +3,17 @@ Docker Image for Moodle on the Azure App Service
 
 ## Build
 ```console
-docker build -t moodle-appservice .
+$ docker build -t moodle-appservice .
 ```
 
 ## Tag
 ```console
-docker tag moodle-appservice [YOUR REGISTRY].azurecr.io/moodle-appservice
+$ docker tag moodle-appservice [YOUR REGISTRY].azurecr.io/moodle-appservice
 ```
 
 ## Push
 ```console
-docker push [YOUR REGISTRY].azurecr.io/moodle-appservice
+$ docker push [YOUR REGISTRY].azurecr.io/moodle-appservice
 ```
 
 ## Application settings
