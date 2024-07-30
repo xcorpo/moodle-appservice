@@ -2,7 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main", "development" ]
+    branches: [ "development" ]
+  pull_request:
+    branches: [ "production" ]
     
 jobs:
   dev:
@@ -23,12 +25,12 @@ jobs:
         docker build -t moodleapp.azurecr.io/moodle-appservice:development-$version .
         docker push moodleapp.azurecr.io/moodle-appservice:development-$version
 
-  main:
+  production:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Checkout to main branch
-      run: git checkout main
+    - name: Checkout to production branch
+      run: git checkout production
 
     - uses: azure/docker-login@v2
       with:
