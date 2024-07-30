@@ -1,0 +1,35 @@
+name: CI/CD for Master
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build-andpush:
+    runs-on: ubuntu-latest
+
+    env:
+      REGISTRY: moodleapp.azurecr.io
+      IMAGE_NAME: moodle-appservice
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Build
+      run: docker/setup-build-action@v1
+
+    - name: Login to ACR
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{env.REGISTRY]]
+        username: ${{ secrets.ACR_PASSWORD }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build and push Docker image
+       run: |
+         TAG=prod
+         docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
+         docker push $REGISTRY/$IMAGE_NAME:$TAG
