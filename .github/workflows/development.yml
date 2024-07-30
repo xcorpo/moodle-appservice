@@ -1,8 +1,8 @@
 name: Development
 
 on:
-  pull_request:
-    branches: [ "production" ]    
+  push:
+    branches: [ "development" ]    
 jobs:
   dev:
     runs-on: ubuntu-latest
