@@ -17,9 +17,8 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
     - run: |
-        version=$(git rev-parse --short HEAD)
-        docker build -t moodleapp.azurecr.io/moodle-appservice:development-$version .
-        docker push moodleapp.azurecr.io/moodle-appservice:development-$version
+        docker build -t moodleapp.azurecr.io/moodle-appservice:development-${{ github.sha }} .
+        docker push moodleapp.azurecr.io/moodle-appservice:development-${{ github.sha }}
 
   deploy:
         runs-on: ubuntu-latest
