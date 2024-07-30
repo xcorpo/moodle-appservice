@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "development" ]
     
 jobs:
 
@@ -20,5 +20,6 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
     
     - run: |
-          docker build -t moodleapp.azurecr.io/moodle-appservice:latest .
-          docker push moodleapp.azurecr.io/moodle-appservice
+        version=$(git rev-parse --short HEAD)
+        docker build -t moodleapp.azurecr.io/moodle-appservice:development-$version .
+        docker push moodleapp.azurecr.io/moodle-appservice:development-$version
