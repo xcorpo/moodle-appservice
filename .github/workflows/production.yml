@@ -8,10 +8,9 @@ jobs:
   build-prod:
     runs-on: ubuntu-latest
     steps:
-    - name: Git Pull Latest Repo
-      run: git pull
-    - name: Checkout to production branch
-      run: git checkout production
+      - uses: actions/checkout@v4
+      with:
+        ref: production
     - uses: azure/docker-login@v2
       with:
         login-server: moodleapp.azurecr.io
