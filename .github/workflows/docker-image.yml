@@ -42,6 +42,6 @@ jobs:
     
     - run: |
         version=$(git rev-parse --short HEAD)
-        docker build -t moodleapp.azurecr.io/moodle-appservice:production-$version .
-        docker push moodleapp.azurecr.io/moodle-appservice:production-$version
+        docker build -t moodleapp.azurecr.io/moodle-appservice:production .
+        docker push moodleapp.azurecr.io/moodle-appservice:production
 
