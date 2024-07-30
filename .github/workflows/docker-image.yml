@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: azure/docker-login@v3
+    - uses: azure/docker-login@v2
       with:
           login-server: moodleapp.azurecr.io
           username: ${{ secrets.ACR_USERNAME }}
