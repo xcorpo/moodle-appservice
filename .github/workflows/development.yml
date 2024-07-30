@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "development" ]    
 jobs:
-  dev:
+  development:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
