@@ -20,5 +20,5 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
     
     - run: |
-          docker build . -t moodleapp.azurecr.io/moodle-appservice:latest
+          docker build -t moodleapp.azurecr.io/moodle-appservice .
           docker push moodleapp.azurecr.io/moodlesvc:latest
