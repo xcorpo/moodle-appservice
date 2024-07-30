@@ -21,4 +21,5 @@ jobs:
     
     - run: |
           docker build -t moodleapp.azurecr.io/moodle-appservice .
-          docker push moodleapp.azurecr.io/moodlesvc:latest
+          docker tag moodle-appservice moodleapp.azurecr.io/moodle-appservice
+          docker push moodleapp.azurecr.io/moodle-appservice:latest
