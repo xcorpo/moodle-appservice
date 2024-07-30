@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "development" ]    
 jobs:
-  dev:
+  development:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -21,3 +21,24 @@ jobs:
         version=$(git rev-parse --short HEAD)
         docker build -t moodleapp.azurecr.io/moodle-appservice:development .
         docker push moodleapp.azurecr.io/moodle-appservice:development
+
+  deploy:
+      runs-on: ubuntu-latest
+      
+      needs: dev
+      
+      environment:
+            name: 'development'
+            url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      
+      steps:
+            - name: Lowercase the repo name
+              run: echo "REPO=${https://github.com/xcorpo/moodle-appservice}" >>${GITHUB_ENV}
+      
+            - name: Deploy to Azure Web App
+              id: deploy-to-webapp
+              uses: azure/webapps-deploy@85270a1854658d167ab239bce43949edb336fa7c
+              with:
+                app-name: ${{ env.AZURE_WEBAPP_NAME }}
+                publish-profile: ${{ secrets.DEV_STAGING_PROFILE }}
+                images: 'ghcr.io/${{ env.REPO }}:${{ github.sha }}'

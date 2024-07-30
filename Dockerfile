@@ -63,6 +63,7 @@ COPY config.php /var/www/html/config.php
 
 # install tools
 RUN apt -y install wget unzip
+RUN apt -y update
 
 # install themes
 RUN cd /tmp/ \
