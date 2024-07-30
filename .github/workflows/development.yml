@@ -1,10 +1,10 @@
 name: Development
 
 on:
-  pull_request:
-    branches: [ "production" ]    
+  push:
+    branches: [ "development" ]    
 jobs:
-  dev:
+  development:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
