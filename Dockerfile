@@ -64,12 +64,6 @@ COPY config.php /var/www/html/config.php
 # install tools
 RUN apt -y install wget unzip
 
-# install plugins
-RUN cd /tmp/ \
-   && wget https://moodle.org/plugins/download.php/21958/qtype_multichoiceset_moodle39_2020071000.zip \
-   && unzip qtype_multichoiceset_moodle39_2020071000.zip \
-   && mv multichoiceset/ /var/www/html/question/type/multichoiceset/
-
 # install themes
 RUN cd /tmp/ \
    && wget https://moodle.org/plugins/download.php/21814/theme_trema_moodle39_2020062200.zip \
