@@ -27,7 +27,8 @@ jobs:
 
     - name: Build and push Docker image
     - uses: docker/build-push-action@v5
-    - run: |  
-               TAG=prod
-               docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
-               docker push $REGISTRY/$IMAGE_NAME:$TAG
+      with:
+         context: .
+         file: dockerfile
+         push: true
+         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:prod
