@@ -4,8 +4,7 @@ on:
   push:
     branches: [ "development" ]
   pull_request:
-    branches: [ "production" ]
-    
+    branches: [ "production" ]    
 jobs:
   dev:
     runs-on: ubuntu-latest
