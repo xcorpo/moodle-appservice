@@ -17,9 +17,6 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
-      
-    - name: Set up Docker Build
-      run: docker/setup-build-action@v1
 
     - name: Login to ACR
       uses: azure/docker-login@v1
@@ -29,7 +26,8 @@ jobs:
         password: ${{ secrets.ACR_PASSWORD }}
 
     - name: Build and push Docker image
-       run: |
-         TAG=prod
-         docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
-         docker push $REGISTRY/$IMAGE_NAME:$TAG
+    - uses: docker/build-push-action@v5
+             run: |
+               TAG=prod
+               docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
+               docker push $REGISTRY/$IMAGE_NAME:$TAG
