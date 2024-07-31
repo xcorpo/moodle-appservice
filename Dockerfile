@@ -65,12 +65,6 @@ COPY config.php /var/www/html/config.php
 RUN apt -y install wget unzip
 RUN apt -y update
 
-#install plugin
-RUN cd /tmp/ \
-   && wget https://moodle.org/plugins/download.php/32641/repository_office365_moodle44_2024042200.zip \
-   && unzip repository_office365_moodle44_2024042200.zip \
-   && mv office365/ /var/www/html/plugin/office365/
-
 # install themes
 RUN cd /tmp/ \
    && wget https://moodle.org/plugins/download.php/21814/theme_trema_moodle39_2020062200.zip \
