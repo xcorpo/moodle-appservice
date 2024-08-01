@@ -1,8 +1,8 @@
 FROM moodlehq/moodle-php-apache:7.3-buster
 LABEL maintainer="Wan Ding Yao <DYWAN@live.com.sg>"
 
-ENV PHP_VERSION 7.3
-ENV MOODLE_VERSION MOODLE_39_STABLE
+ENV PHP_VERSION 8.2
+ENV MOODLE_VERSION MOODLE_400_STABLE
 
 COPY init_container.sh /bin/init_container.sh
 
