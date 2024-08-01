@@ -35,7 +35,7 @@ ENV WEBSITE_ROLE_INSTANCE_ID localRoleInstance
 ENV WEBSITE_INSTANCE_ID localInstance
 ENV PATH ${PATH}:/home/site/
 
-RUN sed -i 's!ErrorLog ${APACHE_LOG_DIR}/error.log!ErrorLog /dev/stderr!g' /etc/apache2/apache2.conf 
+RUN sed -i 's!ErrorLog ${APACHE_LOG_DIR}/error.log!ErrorLog /var/log/apache2/error.log!g' /etc/apache2/apache2.conf 
 RUN sed -i 's!User ${APACHE_RUN_USER}!User www-data!g' /etc/apache2/apache2.conf 
 RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc/apache2/apache2.conf 
 RUN { \
@@ -69,6 +69,12 @@ RUN apt -y update
 RUN cd /tmp/ \
    && wget https://moodle.org/plugins/download.php/21814/theme_trema_moodle39_2020062200.zip \
    && unzip theme_trema_moodle39_2020062200.zip \
+   && mv trema/ /var/www/html/theme/trema/
+
+# install plugin
+   RUN cd /tmp/ \
+   && wget https://moodle.org/plugins/download.php/31347/auth_oidc_moodle42_2023042420.zip \
+   && unzip auth_oidc_moodle42_2023042420.zip \
    && mv trema/ /var/www/html/theme/trema/
 
 # purge tools
