@@ -72,10 +72,10 @@ RUN cd /tmp/ \
    && mv trema/ /var/www/html/theme/trema/
 
 # install plugin
-   RUN cd /tmp/ \
-   && wget https://moodle.org/plugins/download.php/31347/auth_oidc_moodle42_2023042420.zip \
-   && unzip auth_oidc_moodle42_2023042420.zip \
-   && mv trema/ /var/www/html/theme/trema/
+   # RUN cd /tmp/ \
+   # && wget https://moodle.org/plugins/download.php/31347/auth_oidc_moodle42_2023042420.zip \
+   # && unzip auth_oidc_moodle42_2023042420.zip \
+   # && mv trema/ /var/www/html/theme/trema/
 
 # purge tools
 RUN apt -y purge wget unzip
