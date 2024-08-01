@@ -1,4 +1,4 @@
-FROM moodlehq/moodle-php-apache:7.3-buster
+FROM moodlehq/moodle-php-apache:8.2-bookworm
 LABEL maintainer="Wan Ding Yao <DYWAN@live.com.sg>"
 
 ENV PHP_VERSION 8.2
